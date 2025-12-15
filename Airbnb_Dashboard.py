@@ -22,7 +22,11 @@ def add_bar_labels(ax):
 # ============================================================
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Airbnb_Open_Data_final_features.csv")
+    import zipfile, os
+    if os.path.exists("Airbnb_Open_Data_Final_features.csv.zip"):
+        with zipfile.ZipFile("Airbnb_Open_Data_Final_features.csv.zip", 'r') as zip_ref:
+            zip_ref.extractall()
+    df = pd.read_csv("Airbnb_Open_Data_Final_features.csv")
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     return df
 
@@ -625,3 +629,4 @@ if page == "Strategic Findings":
     st.caption("End of Strategic Report — Use filters to explore deeper insights.")
 
 # END OF FILE
+
