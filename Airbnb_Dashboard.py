@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
+import zipfile, os
 
 # ============================================================
 # GLOBAL THEME
@@ -22,7 +23,6 @@ def add_bar_labels(ax):
 # ============================================================
 @st.cache_data
 def load_data():
-    import zipfile, os
     if os.path.exists("Airbnb_Open_Data_Final_features.csv.zip"):
         with zipfile.ZipFile("Airbnb_Open_Data_Final_features.csv.zip", 'r') as zip_ref:
             zip_ref.extractall()
@@ -629,4 +629,5 @@ if page == "Strategic Findings":
     st.caption("End of Strategic Report — Use filters to explore deeper insights.")
 
 # END OF FILE
+
 
